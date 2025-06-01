@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalji radionice - miniTVZ</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="js/workshop-details.js">
+</head>
+<body>
+    <header>
+        <h1>miniTVZ</h1>
+        <nav>
+            <ul>
+                <li><a href="../index.html">Početna</a></li>
+                <li><a href="../radionice.html">Radionice</a></li>
+                <li><a href="#kontakt">Kontakt</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main class="workshop-details">
+        <!-- Back button -->
+        <div class="back-navigation">
+            <button onclick="history.back()" class="back-btn">
+                ← Natrag na radionice
+            </button>
+        </div>
+
+        <!-- Workshop header -->
+        <section class="workshop-header">
+            <div class="workshop-meta">
+                <span class="category">Programiranje</span>
+                <span class="age-group">12-16 godina</span>
+            </div>
+            <h1 id="workshop-title">Uvod u razvoj igara</h1>
+            <div class="workshop-quick-info">
+                <div class="info-item">
+                    <span class="label">Datum:</span>
+                    <span class="value" id="workshop-date">15. srpnja 2025.</span>
+                </div>
+                <div class="info-item">
+                    <span class="label">Vrijeme:</span>
+                    <span class="value" id="workshop-time">9:00 - 16:00</span>
+                </div>
+                <div class="info-item">
+                    <span class="label">Lokacija:</span>
+                    <span class="value" id="workshop-location">TVZ, laboratorij A301</span>
+                </div>
+                <div class="info-item">
+                    <span class="label">Voditelj:</span>
+                    <span class="value" id="workshop-instructor">Dr. Marko Novak</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Main content -->
+        <div class="content-layout">
+            <!-- Left column - Main content -->
+            <div class="main-content">
+                <!-- Description -->
+                <section class="content-section">
+                    <h2>Opis radionice</h2>
+                    <div id="workshop-description">
+                        <p>Ova radionica pruža učenicima priliku da se upoznaju s osnovama razvoja video igara kroz praktičan i kreativan pristup. Koristit ćemo Scratch za vizualno programiranje i Python s Pygame bibliotekom za naprednije učenike.</p>
+                        <p>Tijekom radionice, učenici će raditi na stvarnim projektima, od jednostavnih puzzle igara do interaktivnih avantura. Svaki sudionik će na kraju imati vlastitu igru koju može podijeliti s prijateljima i obitelji.</p>
+                    </div>
+                </section>
+
+                <!-- Learning outcomes -->
+                <section class="content-section">
+                    <h2>Ishodi učenja</h2>
+                    <ul class="outcomes-list" id="learning-outcomes">
+                        <li>Razumjevanje osnova logike programiranja i algoritamskog razmišljanja</li>
+                        <li>Kreiranje vlastih interaktivnih igara koristeći Scratch i Python</li>
+                        <li>Upoznavanje s osnovama game designa i korisničkog iskustva</li>
+                        <li>Razvoj vještina rješavanja problema kroz kreativno programiranje</li>
+                        <li>Suradnja u timu i prezentiranje vlastitih projekata</li>
+                    </ul>
+                </section>
+
+                <!-- Prerequisites -->
+                <section class="content-section">
+                    <h2>Preduvjeti</h2>
+                    <div id="prerequisites">
+                        <p>Radionica je prilagođena početnicima. Potrebno je osnovno poznavanje rada s računalom i interes za tehnologiju. Preporučuje se prethodno iskustvo s bilo kojim programskim jezikom, ali nije obavezno.</p>
+                    </div>
+                </section>
+
+                <!-- Materials -->
+                <section class="content-section">
+                    <h2>Potrebni materijali</h2>
+                    <ul class="materials-list" id="materials">
+                        <li>Laptop ili računalo (mogu se koristiti školska računala)</li>
+                        <li>Pristup internetu</li>
+                        <li>Svi softveri bit će instaliran unaprijed</li>
+                        <li>Bilježnica i olovka za skice</li>
+                    </ul>
+                </section>
+
+                <!-- Image gallery -->
+                <section class="content-section">
+                    <h2>Galerija slika</h2>
+                    <div class="image-gallery" id="workshop-gallery">
+                        <div class="gallery-grid">
+                            <img src="../images/workshop1.jpg" alt="Učenici rade na projektima" onclick="openModal(this)">
+                            <img src="../images/workshop2.jpg" alt="Programiranje u Scratch-u" onclick="openModal(this)">
+                            <img src="../images/workshop3.jpg" alt="Prezentiranje igara" onclick="openModal(this)">
+                            <img src="../images/workshop4.jpg" alt="Timski rad" onclick="openModal(this)">
+                            <img src="../images/workshop5.jpg" alt="Finalni rezultati" onclick="openModal(this)">
+                            <img src="../images/workshop6.jpg" alt="Učenici s instruktorom" onclick="openModal(this)">
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Right sidebar -->
+            <aside class="sidebar">
+                <!-- Registration card -->
+                <div class="registration-card">
+                    <h3>Prijavite se na radionicu</h3>
+                    <div class="price-info">
+                        <span class="price">Besplatno</span>
+                    </div>
+                    <div class="spots-info">
+                        <span class="spots-available">Dostupno mjesta: <strong id="available-spots">12</strong></span>
+                    </div>
+                    <button class="register-btn" onclick="registerForWorkshop()">
+                        Prijavi se
+                    </button>
+                    <p class="register-note">Za učenike do 16 godina potrebna je suglasnost roditelja</p>
+                </div>
+
+                <!-- Contact instructor -->
+                <div class="contact-card">
+                    <h3>Kontaktiraj voditelja</h3>
+                    <div class="instructor-info">
+                        <img src="../images/instructor-placeholder.jpg" alt="Dr. Marko Novak" class="instructor-photo">
+                        <div class="instructor-details">
+                            <h4 id="instructor-name">Dr. Marko Novak</h4>
+                            <p class="instructor-title">Predavač programiranja</p>
+                            <p class="instructor-experience">10+ godina iskustva</p>
+                        </div>
+                    </div>
+                    <button class="contact-btn" onclick="contactInstructor()">
+                        Pošalji poruku
+                    </button>
+                </div>
+
+                <!-- Similar workshops -->
+                <div class="similar-workshops">
+                    <h3>Slične radionice</h3>
+                    <div class="similar-workshop-item">
+                        <h4>Robotika s Arduino</h4>
+                        <p>22. srpnja 2025.</p>
+                        <a href="workshop-robotika.html">Pogledaj detalje</a>
+                    </div>
+                    <div class="similar-workshop-item">
+                        <h4>3D modeliranje</h4>
+                        <p>29. srpnja 2025.</p>
+                        <a href="workshop-3d.html">Pogledaj detalje</a>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <!-- Image modal -->
+    <div id="imageModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <img id="modalImage" src="" alt="">
+            <div class="modal-caption" id="modalCaption"></div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 miniTVZ. Sva prava pridržana.</p>
+    </footer>
+
+    <script src="../js/workshop-details.js"></script>
+</body>
+</html>
