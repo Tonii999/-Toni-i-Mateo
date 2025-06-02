@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O nama - miniTVZ</title>
+    <style>
+        /* Reset i osnovni stilovi */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f5f5;
+        }
+
+        /* Header stilovi */
+        header {
+            background: #2563eb;
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-top {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h1 {
+            font-size: 2rem;
+        }
+
+        /* Language switcher */
+        .language-switcher {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .lang-btn {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 0.25rem 0.75rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.3s;
+            font-size: 14px;
+        }
+
+        .lang-btn:hover,
+        .lang-btn.active {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        nav {
+            background: rgba(0, 0, 0, 0.1);
+            padding: 0.5rem 0;
+            margin-top: 1rem;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: background 0.3s;
+        }
+
+        nav a:hover, nav a.active {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Page header */
+        .page-header {
+            background: #6366f1;
+            color: white;
+            text-align: center;
+            padding: 3rem 2rem;
+        }
+
+        .page-header h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* Main content */
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        /* About section */
+        .about-section {
+            background: white;
+            padding: 3rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin-bottom: 3rem;
+        }
+
+        .about-section h3 {
+            color: #1f2937;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid #2563eb;
+            padding-left: 1rem;
+        }
+
+        .about-content {
+            color: #4b5563;
+            line-height: 1.8;
+        }
+
+        .about-content p {
+            margin-bottom: 1.5rem;
+        }
+
+        /* Team section */
+        .team-section {
+            margin-bottom: 3rem;
+        }
+
+        .section-title {
+            color: #1f2937;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        /* Teachers grid */
+        .teachers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .teacher-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+            cursor: pointer;
+        }
+
+        .teacher-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        }
+
+        .teacher-photo {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            background: #e5e7eb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #9ca3af;
+            font-size: 1.1rem;
+        }
+
+        .teacher-info {
+            padding: 1.5rem;
+        }
+
+        .teacher-name {
+            color: #1f2937;
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .teacher-title {
+            color: #6b7280;
+            margin-bottom: 0.75rem;
+        }
+
+        .teacher-bio {
+            color: #4b5563;
+            font-size: 0.875rem;
+            line-height: 1.5;
+            margin-bottom: 1rem;
+        }
+
+        .teacher-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .teacher-link {
+            color: #2563eb;
+            text-decoration: none;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        .teacher-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Students section */
+        .students-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+
+        .students-section h4 {
+            color: #1f2937;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .students-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+
+        .student-item {
+            color: #4b5563;
+            padding: 0.75rem;
+            background: #f9fafb;
+            border-radius: 8px;
+            border-left: 3px solid #2563eb;
+        }
+
+        /* Contact info */
+        .contact-info {
+            background: #f3f4f6;
+            padding: 2rem;
+            border-radius: 12px;
+            margin-top: 3rem;
+        }
+
+        .contact-info h3 {
+            color: #1f2937;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: start;
+            gap: 1rem;
+        }
+
+        .contact-icon {
+            font-size: 1.5rem;
+        }
+
+        .contact-text {
+            color: #4b5563;
+        }
+
+        .contact-text strong {
+            color: #1f2937;
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+
+        /* Footer */
+        footer {
+            background: #374151;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            margin-top: 3rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-top {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 0.5rem;
+            }
+            
+            nav a {
+                padding: 0.5rem;
+                font-size: 0.875rem;
+            }
+            
+            main {
+                padding: 2rem 1rem;
+            }
+            
+            .teachers-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .students-list {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-top">
+            <h1>miniTVZ</h1>
+            <div class="language-switcher">
+                <button class="lang-btn active" onclick="changeLanguage('hr')">HR</button>
+                <button class="lang-btn" onclick="changeLanguage('en')">EN</button>
+            </div>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Početna</a></li>
+                <li><a href="index.html#what-we-do">Što radimo?</a></li>
+                <li><a href="index.html#news">Novosti</a></li>
+                <li><a href="radionice.html">Radionice</a></li>
+                <li><a href="index.html#partners">Partneri</a></li>
+                <li><a href="o-nama.html" class="active">O nama</a></li>
+                <li><a href="kontakt.html">Kontakt</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <div class="page-header">
+        <h2>O NAMA</h2>
+    </div>
+    
+    <main>
+        <!-- About project section -->
+        <section class="about-section">
+            <h3>O projektu i aktivnostima</h3>
+            <div class="about-content">
+                <p>
+                    miniTVZ je obrazovna inicijativa Tehničkog veleučilišta Zagreb pokrenuta 2020. godine s ciljem približavanja tehnologije i inženjerstva mladima. Projekt je nastao iz želje da se učenicima osnovnih i srednjih škola omogući praktično iskustvo rada s modernim tehnologijama kroz interaktivne radionice.
+                </p>
+                <p>
+                    Naše aktivnosti obuhvaćaju širok spektar tehnoloških područja - od osnovnog programiranja u Scratchu za najmlađe, preko robotike s Arduino i LEGO Mindstorms platformama, do naprednog 3D modeliranja i elektronike. Svaka radionica osmišljena je tako da potiče kreativnost, logičko razmišljanje i timski rad.
+                </p>
+                <p>
+                    Do sada smo educirali preko 500 učenika kroz više od 20 različitih radionica. Naši mentori su iskusni nastavnici TVZ-a i studenti viših godina koji s entuzijazmom prenose znanje mlađim generacijama. Posebno smo ponosni na suradnju s osnovnim i srednjim školama diljem Zagreba te na podršku lokalnih tehnoloških tvrtki.
+                </p>
+                <p>
+                    Vjerujemo da je rano izlaganje tehnologiji ključno za razvoj digitalnih kompetencija potrebnih u 21. stoljeću. Kroz praktičan rad i zabavu, nastojimo potaknuti interes za STEM područja i možda inspirirati buduće
