@@ -25,12 +25,50 @@
             color: white;
             padding: 1rem 0;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-top {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
         header h1 {
-            text-align: center;
-            margin-bottom: 1rem;
             font-size: 2rem;
+        }
+
+        /* Language switcher */
+        .language-switcher {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .lang-btn {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 0.25rem 0.75rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.3s;
+            font-size: 14px;
+        }
+
+        .lang-btn:hover,
+        .lang-btn.active {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        nav {
+            background: rgba(0, 0, 0, 0.1);
+            padding: 0.5rem 0;
+            margin-top: 1rem;
         }
 
         nav ul {
@@ -38,6 +76,10 @@
             display: flex;
             justify-content: center;
             gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            flex-wrap: wrap;
         }
 
         nav a {
@@ -66,6 +108,54 @@
             font-size: 2.5rem;
             margin-bottom: 3rem;
             font-weight: 700;
+        }
+
+        /* Tab navigation */
+        .tab-navigation {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            border-bottom: 2px solid #e5e7eb;
+        }
+
+        .tab-btn {
+            background: none;
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            color: #6b7280;
+            cursor: pointer;
+            position: relative;
+            transition: color 0.3s;
+        }
+
+        .tab-btn:hover {
+            color: #2563eb;
+        }
+
+        .tab-btn.active {
+            color: #2563eb;
+            font-weight: 600;
+        }
+
+        .tab-btn.active::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: #2563eb;
+        }
+
+        /* Tab content */
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
         }
 
         /* Filter section */
@@ -129,6 +219,17 @@
         .workshop-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        }
+
+        .workshop-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            background: #e5e7eb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #9ca3af;
         }
 
         .workshop-header {
@@ -199,6 +300,92 @@
             background: #4f46e5;
         }
 
+        /* Archive specific styles */
+        .archive-card {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin-bottom: 1rem;
+        }
+
+        .archive-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .archive-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #1f2937;
+        }
+
+        .archive-date {
+            color: #6b7280;
+            font-size: 0.875rem;
+        }
+
+        .archive-content {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .archive-info {
+            flex: 1;
+        }
+
+        .archive-description {
+            color: #4b5563;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .archive-stats {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .stat-item {
+            color: #6b7280;
+            font-size: 0.875rem;
+        }
+
+        .stat-item strong {
+            color: #1f2937;
+            font-weight: 600;
+        }
+
+        .archive-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .archive-link {
+            color: #2563eb;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.875rem;
+        }
+
+        .archive-link:hover {
+            text-decoration: underline;
+        }
+
+        .archive-thumbnail {
+            width: 200px;
+            height: 150px;
+            background: #e5e7eb;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #9ca3af;
+            flex-shrink: 0;
+        }
+
         /* No results message */
         .no-results {
             text-align: center;
@@ -228,16 +415,43 @@
             main {
                 padding: 1rem;
             }
+            
+            .archive-content {
+                flex-direction: column;
+            }
+            
+            .archive-thumbnail {
+                width: 100%;
+            }
+            
+            nav ul {
+                gap: 0.5rem;
+            }
+            
+            nav a {
+                padding: 0.5rem;
+                font-size: 0.875rem;
+            }
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>miniTVZ</h1>
+        <div class="header-top">
+            <h1>miniTVZ</h1>
+            <div class="language-switcher">
+                <button class="lang-btn active" onclick="changeLanguage('hr')">HR</button>
+                <button class="lang-btn" onclick="changeLanguage('en')">EN</button>
+            </div>
+        </div>
         <nav>
             <ul>
                 <li><a href="index.html">Početna</a></li>
+                <li><a href="index.html#what-we-do">Što radimo?</a></li>
+                <li><a href="index.html#news">Novosti</a></li>
                 <li><a href="radionice.html" class="active">Radionice</a></li>
+                <li><a href="index.html#partners">Partneri</a></li>
+                <li><a href="o-nama.html">O nama</a></li>
                 <li><a href="kontakt.html">Kontakt</a></li>
             </ul>
         </nav>
@@ -246,140 +460,192 @@
     <main>
         <h2 class="page-title">RADIONICE</h2>
         
-        <!-- Filter section -->
-        <div class="filter-section">
-            <div class="filter-group">
-                <span class="filter-label">Kategorije:</span>
-                <button class="filter-btn active" onclick="filterWorkshops('sve')">Sve</button>
-                <button class="filter-btn" onclick="filterWorkshops('programiranje')">Programiranje</button>
-                <button class="filter-btn" onclick="filterWorkshops('robotika')">Robotika</button>
-                <button class="filter-btn" onclick="filterWorkshops('dizajn')">3D Dizajn</button>
-                <button class="filter-btn" onclick="filterWorkshops('elektronika')">Elektronika</button>
-            </div>
+        <!-- Tab navigation -->
+        <div class="tab-navigation">
+            <button class="tab-btn active" onclick="switchTab('upcoming')">Nadolazeće radionice</button>
+            <button class="tab-btn" onclick="switchTab('archive')">Održane radionice</button>
         </div>
         
-        <!-- Workshops grid -->
-        <div class="workshops-grid" id="workshopsGrid">
-            <!-- Workshop 1 -->
-            <div class="workshop-card" data-category="programiranje" onclick="goToWorkshopDetails('uvod-u-razvoj-igara')">
-                <div class="workshop-header">
-                    <h3 class="workshop-title">Uvod u razvoj igara</h3>
-                    <p class="workshop-date">15.7.2025.</p>
-                </div>
-                <div class="workshop-body">
-                    <p class="workshop-description">
-                        Učenici će naučiti osnove programiranja igara koristeći Scratch i jednostavne Python biblioteke.
-                    </p>
-                    <div class="workshop-meta">
-                        <span class="workshop-category">Programiranje</span>
-                        <span class="workshop-age">12-16 godina</span>
-                    </div>
-                    <a href="workshop-details.html" class="workshop-details-btn">DETALJI</a>
+        <!-- Upcoming workshops tab -->
+        <div id="upcoming" class="tab-content active">
+            <!-- Filter section -->
+            <div class="filter-section">
+                <div class="filter-group">
+                    <span class="filter-label">Kategorije:</span>
+                    <button class="filter-btn active" onclick="filterWorkshops('sve')">Sve</button>
+                    <button class="filter-btn" onclick="filterWorkshops('programiranje')">Programiranje</button>
+                    <button class="filter-btn" onclick="filterWorkshops('robotika')">Robotika</button>
+                    <button class="filter-btn" onclick="filterWorkshops('dizajn')">3D Dizajn</button>
+                    <button class="filter-btn" onclick="filterWorkshops('elektronika')">Elektronika</button>
                 </div>
             </div>
             
-            <!-- Workshop 2 -->
-            <div class="workshop-card" data-category="robotika" onclick="goToWorkshopDetails('robotika-s-arduino')">
-                <div class="workshop-header" style="background: linear-gradient(135deg, #f093fb, #f5576c);">
-                    <h3 class="workshop-title">Robotika s Arduino</h3>
-                    <p class="workshop-date">22.7.2025.</p>
-                </div>
-                <div class="workshop-body">
-                    <p class="workshop-description">
-                        Praktična radionica gdje učenici grade i programiraju robotski sustav s elektronskim komponentama.
-                    </p>
-                    <div class="workshop-meta">
-                        <span class="workshop-category" style="background: #fce7f3; color: #be185d;">Robotika</span>
-                        <span class="workshop-age">14-18 godina</span>
+            <!-- Workshops grid -->
+            <div class="workshops-grid" id="workshopsGrid">
+                <!-- Workshop 1 -->
+                <div class="workshop-card" data-category="programiranje" onclick="goToWorkshopDetails('uvod-u-razvoj-igara')">
+                    <div class="workshop-image">[Slika radionice]</div>
+                    <div class="workshop-header">
+                        <h3 class="workshop-title">Uvod u razvoj igara</h3>
+                        <p class="workshop-date">15.7.2025.</p>
                     </div>
-                    <a href="workshop-details.html" class="workshop-details-btn">DETALJI</a>
-                </div>
-            </div>
-            
-            <!-- Workshop 3 -->
-            <div class="workshop-card" data-category="dizajn" onclick="goToWorkshopDetails('3d-modeliranje')">
-                <div class="workshop-header" style="background: linear-gradient(135deg, #4facfe, #00f2fe);">
-                    <h3 class="workshop-title">3D modeliranje</h3>
-                    <p class="workshop-date">29.7.2025.</p>
-                </div>
-                <div class="workshop-body">
-                    <p class="workshop-description">
-                        Uvod u 3D dizajn pomoću Tinkercad-a i Blender-a s ispisivanjem na 3D printeru.
-                    </p>
-                    <div class="workshop-meta">
-                        <span class="workshop-category" style="background: #e0f2fe; color: #0369a1;">3D Dizajn</span>
-                        <span class="workshop-age">10-16 godina</span>
+                    <div class="workshop-body">
+                        <p class="workshop-description">
+                            Učenici će naučiti osnove programiranja igara koristeći Scratch i jednostavne Python biblioteke.
+                        </p>
+                        <div class="workshop-meta">
+                            <span class="workshop-category">Programiranje</span>
+                            <span class="workshop-age">12-16 godina</span>
+                        </div>
+                        <a href="workshop-details.html" class="workshop-details-btn">DETALJI</a>
                     </div>
-                    <a href="workshop-details.html" class="workshop-details-btn">DETALJI</a>
                 </div>
-            </div>
-            
-            <!-- Workshop 4 -->
-            <div class="workshop-card" data-category="elektronika" onclick="goToWorkshopDetails('osnove-elektronike')">
-                <div class="workshop-header" style="background: linear-gradient(135deg, #fa709a, #fee140);">
-                    <h3 class="workshop-title">Osnove elektronike</h3>
-                    <p class="workshop-date">5.8.2025.</p>
-                </div>
-                <div class="workshop-body">
-                    <p class="workshop-description">
-                        Učenici će naučiti osnove elektroničkih sklopova kroz praktične eksperimente i projekte.
-                    </p>
-                    <div class="workshop-meta">
-                        <span class="workshop-category" style="background: #fef3c7; color: #d97706;">Elektronika</span>
-                        <span class="workshop-age">12-17 godina</span>
+                
+                <!-- Workshop 2 -->
+                <div class="workshop-card" data-category="robotika" onclick="goToWorkshopDetails('robotika-s-arduino')">
+                    <div class="workshop-image">[Slika radionice]</div>
+                    <div class="workshop-header" style="background: linear-gradient(135deg, #f093fb, #f5576c);">
+                        <h3 class="workshop-title">Robotika s Arduino</h3>
+                        <p class="workshop-date">22.7.2025.</p>
                     </div>
-                    <a href="workshop-details.html" class="workshop-details-btn">DETALJI</a>
-                </div>
-            </div>
-            
-            <!-- Workshop 5 -->
-            <div class="workshop-card" data-category="programiranje" onclick="goToWorkshopDetails('web-development')">
-                <div class="workshop-header" style="background: linear-gradient(135deg, #667eea, #764ba2);">
-                    <h3 class="workshop-title">Web razvoj za početnike</h3>
-                    <p class="workshop-date">12.8.2025.</p>
-                </div>
-                <div class="workshop-body">
-                    <p class="workshop-description">
-                        Osnove HTML-a, CSS-a i JavaScripta kroz izradu vlastite web stranice.
-                    </p>
-                    <div class="workshop-meta">
-                        <span class="workshop-category">Programiranje</span>
-                        <span class="workshop-age">13-18 godina</span>
+                    <div class="workshop-body">
+                        <p class="workshop-description">
+                            Praktična radionica gdje učenici grade i programiraju robotski sustav s elektronskim komponentama.
+                        </p>
+                        <div class="workshop-meta">
+                            <span class="workshop-category" style="background: #fce7f3; color: #be185d;">Robotika</span>
+                            <span class="workshop-age">14-18 godina</span>
+                        </div>
+                        <a href="workshop-details.html" class="workshop-details-btn">DETALJI</a>
                     </div>
-                    <a href="workshop-details.html" class="workshop-details-btn">DETALJI</a>
                 </div>
-            </div>
-            
-            <!-- Workshop 6 -->
-            <div class="workshop-card" data-category="robotika" onclick="goToWorkshopDetails('lego-mindstorms')">
-                <div class="workshop-header" style="background: linear-gradient(135deg, #f093fb, #f5576c);">
-                    <h3 class="workshop-title">LEGO Mindstorms robotika</h3>
-                    <p class="workshop-date">19.8.2025.</p>
-                </div>
-                <div class="workshop-body">
-                    <p class="workshop-description">
-                        Izgradnja i programiranje robota pomoću LEGO Mindstorms EV3 seta.
-                    </p>
-                    <div class="workshop-meta">
-                        <span class="workshop-category" style="background: #fce7f3; color: #be185d;">Robotika</span>
-                        <span class="workshop-age">10-15 godina</span>
+                
+                <!-- Workshop 3 -->
+                <div class="workshop-card" data-category="dizajn" onclick="goToWorkshopDetails('3d-modeliranje')">
+                    <div class="workshop-image">[Slika radionice]</div>
+                    <div class="workshop-header" style="background: linear-gradient(135deg, #4facfe, #00f2fe);">
+                        <h3 class="workshop-title">3D modeliranje</h3>
+                        <p class="workshop-date">29.7.2025.</p>
                     </div>
-                    <a href="workshop-details.html" class="workshop-details-btn">DETALJI</a>
+                    <div class="workshop-body">
+                        <p class="workshop-description">
+                            Uvod u 3D dizajn pomoću Tinkercad-a i Blender-a s ispisivanjem na 3D printeru.
+                        </p>
+                        <div class="workshop-meta">
+                            <span class="workshop-category" style="background: #e0f2fe; color: #0369a1;">3D Dizajn</span>
+                            <span class="workshop-age">10-16 godina</span>
+                        </div>
+                        <a href="workshop-details.html" class="workshop-details-btn">DETALJI</a>
+                    </div>
                 </div>
             </div>
         </div>
         
-        <!-- No results message (hidden by default) -->
-        <div class="no-results" id="noResults" style="display: none;">
-            <p>Nema radionica u odabranoj kategoriji.</p>
+        <!-- Archive tab -->
+        <div id="archive" class="tab-content">
+            <div class="archive-list">
+                <!-- Archive item 1 -->
+                <div class="archive-card">
+                    <div class="archive-header">
+                        <h3 class="archive-title">Osnove programiranja u Pythonu</h3>
+                        <span class="archive-date">15. - 17. svibnja 2025.</span>
+                    </div>
+                    <div class="archive-content">
+                        <div class="archive-info">
+                            <p class="archive-description">
+                                Trodnevna intenzivna radionica uvedla je 25 učenika u svijet programiranja. Kroz praktične primjere i zabavne projekte, učenici su savladali osnovne koncepte programiranja.
+                            </p>
+                            <div class="archive-stats">
+                                <span class="stat-item"><strong>25</strong> polaznika</span>
+                                <span class="stat-item"><strong>3</strong> dana</span>
+                                <span class="stat-item"><strong>15</strong> projekata</span>
+                            </div>
+                            <div class="archive-links">
+                                <a href="arhiva/python-osnove.html" class="archive-link">Detaljan opis →</a>
+                                <a href="galerija/python-osnove.html" class="archive-link">Galerija slika →</a>
+                            </div>
+                        </div>
+                        <div class="archive-thumbnail">[Slika]</div>
+                    </div>
+                </div>
+                
+                <!-- Archive item 2 -->
+                <div class="archive-card">
+                    <div class="archive-header">
+                        <h3 class="archive-title">LEGO Mindstorms natjecanje</h3>
+                        <span class="archive-date">8. svibnja 2025.</span>
+                    </div>
+                    <div class="archive-content">
+                        <div class="archive-info">
+                            <p class="archive-description">
+                                Uzbudljivo natjecanje u robotici okupilo je 8 timova iz različitih škola. Timovi su programirali robote za izvršavanje složenih zadataka na poligonu.
+                            </p>
+                            <div class="archive-stats">
+                                <span class="stat-item"><strong>32</strong> natjecatelja</span>
+                                <span class="stat-item"><strong>8</strong> timova</span>
+                                <span class="stat-item"><strong>1.</strong> OŠ Matije Gupca</span>
+                            </div>
+                            <div class="archive-links">
+                                <a href="arhiva/lego-natjecanje.html" class="archive-link">Detaljan opis →</a>
+                                <a href="galerija/lego-natjecanje.html" class="archive-link">Galerija slika →</a>
+                            </div>
+                        </div>
+                        <div class="archive-thumbnail">[Slika]</div>
+                    </div>
+                </div>
+                
+                <!-- Archive item 3 -->
+                <div class="archive-card">
+                    <div class="archive-header">
+                        <h3 class="archive-title">3D dizajn i printanje</h3>
+                        <span class="archive-date">25. travnja 2025.</span>
+                    </div>
+                    <div class="archive-content">
+                        <div class="archive-info">
+                            <p class="archive-description">
+                                Jednodnevna radionica omogućila je učenicima da dizajniraju vlastite 3D modele i vide kako se printaju. Svaki učenik odnio je kući svoj isprintani projekt.
+                            </p>
+                            <div class="archive-stats">
+                                <span class="stat-item"><strong>15</strong> polaznika</span>
+                                <span class="stat-item"><strong>15</strong> modela</span>
+                                <span class="stat-item"><strong>100%</strong> zadovoljstvo</span>
+                            </div>
+                            <div class="archive-links">
+                                <a href="arhiva/3d-dizajn.html" class="archive-link">Detaljan opis →</a>
+                                <a href="galerija/3d-dizajn.html" class="archive-link">Galerija slika →</a>
+                            </div>
+                        </div>
+                        <div class="archive-thumbnail">[Slika]</div>
+                    </div>
+                </div>
+            </div>
         </div>
     </main>
 
     <footer>
-        <p>&copy; 2025 miniTVZ. Sva prava pridržana.</p>
+        <p>&copy; 2025 miniTVZ - Tehničko veleučilište Zagreb. Sva prava pridržana.</p>
     </footer>
 
     <script>
+        // Tab switching
+        function switchTab(tabName) {
+            // Hide all tabs
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Remove active class from all buttons
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Show selected tab
+            document.getElementById(tabName).classList.add('active');
+            
+            // Add active class to clicked button
+            event.target.classList.add('active');
+        }
+        
         // Filter functionality
         function filterWorkshops(category) {
             const cards = document.querySelectorAll('.workshop-card');
@@ -406,16 +672,24 @@
                     card.style.display = 'none';
                 }
             });
-            
-            // Show/hide no results message
-            noResults.style.display = hasResults ? 'none' : 'block';
         }
         
         // Navigate to workshop details
         function goToWorkshopDetails(workshopId) {
-            // Store workshop ID in sessionStorage for the details page
             sessionStorage.setItem('selectedWorkshop', workshopId);
             window.location.href = 'workshop-details.html';
+        }
+        
+        // Language switcher
+        function changeLanguage(lang) {
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            if (lang === 'en') {
+                alert('English version coming soon!');
+            }
         }
     </script>
 </body>
