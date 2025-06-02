@@ -3,181 +3,309 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detalji radionice - miniTVZ</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="js/workshop-details.js">
+    <title>miniTVZ - Početna</title>
+    <style>
+        /* Reset i osnovni stilovi */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f5f5;
+        }
+
+        /* Header stilovi */
+        header {
+            background: #2563eb;
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            text-align: center;
+            margin-bottom: 1rem;
+            font-size: 2rem;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: background 0.3s;
+        }
+
+        nav a:hover, nav a.active {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Hero section */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .hero h2 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: white;
+            color: #667eea;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        /* Main content */
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        /* Features section */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h3 {
+            color: #1f2937;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card p {
+            color: #6b7280;
+            line-height: 1.6;
+        }
+
+        /* About section */
+        .about-section {
+            background: white;
+            padding: 3rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin-bottom: 3rem;
+        }
+
+        .about-section h2 {
+            color: #1f2937;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text p {
+            color: #6b7280;
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+
+        .about-image {
+            background: #e5e7eb;
+            height: 300px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #9ca3af;
+        }
+
+        /* Stats section */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #2563eb;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: #6b7280;
+            font-size: 1.1rem;
+        }
+
+        /* Footer */
+        footer {
+            background: #374151;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            margin-top: 3rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h2 {
+                font-size: 2rem;
+            }
+            
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            main {
+                padding: 2rem 1rem;
+            }
+        }
+    </style>
 </head>
 <body>
     <header>
         <h1>miniTVZ</h1>
         <nav>
             <ul>
-                <li><a href="../index.html">Početna</a></li>
-                <li><a href="../radionice.html">Radionice</a></li>
-                <li><a href="#kontakt">Kontakt</a></li>
+                <li><a href="index.html" class="active">Početna</a></li>
+                <li><a href="radionice.html">Radionice</a></li>
+                <li><a href="kontakt.html">Kontakt</a></li>
             </ul>
         </nav>
     </header>
     
-    <main class="workshop-details">
-        <!-- Back button -->
-        <div class="back-navigation">
-            <button onclick="history.back()" class="back-btn">
-                ← Natrag na radionice
-            </button>
-        </div>
-
-        <!-- Workshop header -->
-        <section class="workshop-header">
-            <div class="workshop-meta">
-                <span class="category">Programiranje</span>
-                <span class="age-group">12-16 godina</span>
+    <!-- Hero section -->
+    <section class="hero">
+        <h2>Dobrodošli u miniTVZ</h2>
+        <p>Inicijativa Tehničkog veleučilišta Zagreb za edukaciju mladih u području tehnologije i inovacija</p>
+        <a href="radionice.html" class="cta-button">Pregledaj radionice</a>
+    </section>
+    
+    <main>
+        <!-- Features section -->
+        <section class="features">
+            <div class="feature-card">
+                <div class="feature-icon">🎓</div>
+                <h3>Edukativne radionice</h3>
+                <p>Praktične radionice iz programiranja, robotike, 3D modeliranja i elektronike prilagođene različitim uzrastima</p>
             </div>
-            <h1 id="workshop-title">Uvod u razvoj igara</h1>
-            <div class="workshop-quick-info">
-                <div class="info-item">
-                    <span class="label">Datum:</span>
-                    <span class="value" id="workshop-date">15. srpnja 2025.</span>
+            <div class="feature-card">
+                <div class="feature-icon">👥</div>
+                <h3>Stručni mentori</h3>
+                <p>Naši predavači su iskusni stručnjaci iz akademske zajednice i industrije s bogatim pedagoškim iskustvom</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🏆</div>
+                <h3>Certifikati</h3>
+                <p>Svi polaznici koji uspješno završe radionicu dobivaju certifikat o sudjelovanju</p>
+            </div>
+        </section>
+        
+        <!-- About section -->
+        <section class="about-section">
+            <h2>O inicijativi miniTVZ</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>miniTVZ je obrazovna inicijativa Tehničkog veleučilišta Zagreb pokrenuta s ciljem približavanja tehnologije mladima.</p>
+                    <p>Kroz praktične radionice, učenici osnovnih i srednjih škola mogu steći prva znanja iz područja programiranja, robotike, elektronike i drugih STEM disciplina.</p>
+                    <p>Naš cilj je potaknuti interes za tehnologiju i pomoći mladima da otkriju svoje talente kroz zabavne i edukativne sadržaje.</p>
                 </div>
-                <div class="info-item">
-                    <span class="label">Vrijeme:</span>
-                    <span class="value" id="workshop-time">9:00 - 16:00</span>
-                </div>
-                <div class="info-item">
-                    <span class="label">Lokacija:</span>
-                    <span class="value" id="workshop-location">TVZ, laboratorij A301</span>
-                </div>
-                <div class="info-item">
-                    <span class="label">Voditelj:</span>
-                    <span class="value" id="workshop-instructor">Dr. Marko Novak</span>
+                <div class="about-image">
+                    [Slika učenika na radionici]
                 </div>
             </div>
         </section>
-
-        <!-- Main content -->
-        <div class="content-layout">
-            <!-- Left column - Main content -->
-            <div class="main-content">
-                <!-- Description -->
-                <section class="content-section">
-                    <h2>Opis radionice</h2>
-                    <div id="workshop-description">
-                        <p>Ova radionica pruža učenicima priliku da se upoznaju s osnovama razvoja video igara kroz praktičan i kreativan pristup. Koristit ćemo Scratch za vizualno programiranje i Python s Pygame bibliotekom za naprednije učenike.</p>
-                        <p>Tijekom radionice, učenici će raditi na stvarnim projektima, od jednostavnih puzzle igara do interaktivnih avantura. Svaki sudionik će na kraju imati vlastitu igru koju može podijeliti s prijateljima i obitelji.</p>
-                    </div>
-                </section>
-
-                <!-- Learning outcomes -->
-                <section class="content-section">
-                    <h2>Ishodi učenja</h2>
-                    <ul class="outcomes-list" id="learning-outcomes">
-                        <li>Razumjevanje osnova logike programiranja i algoritamskog razmišljanja</li>
-                        <li>Kreiranje vlastih interaktivnih igara koristeći Scratch i Python</li>
-                        <li>Upoznavanje s osnovama game designa i korisničkog iskustva</li>
-                        <li>Razvoj vještina rješavanja problema kroz kreativno programiranje</li>
-                        <li>Suradnja u timu i prezentiranje vlastitih projekata</li>
-                    </ul>
-                </section>
-
-                <!-- Prerequisites -->
-                <section class="content-section">
-                    <h2>Preduvjeti</h2>
-                    <div id="prerequisites">
-                        <p>Radionica je prilagođena početnicima. Potrebno je osnovno poznavanje rada s računalom i interes za tehnologiju. Preporučuje se prethodno iskustvo s bilo kojim programskim jezikom, ali nije obavezno.</p>
-                    </div>
-                </section>
-
-                <!-- Materials -->
-                <section class="content-section">
-                    <h2>Potrebni materijali</h2>
-                    <ul class="materials-list" id="materials">
-                        <li>Laptop ili računalo (mogu se koristiti školska računala)</li>
-                        <li>Pristup internetu</li>
-                        <li>Svi softveri bit će instaliran unaprijed</li>
-                        <li>Bilježnica i olovka za skice</li>
-                    </ul>
-                </section>
-
-                <!-- Image gallery -->
-                <section class="content-section">
-                    <h2>Galerija slika</h2>
-                    <div class="image-gallery" id="workshop-gallery">
-                        <div class="gallery-grid">
-                            <img src="../images/workshop1.jpg" alt="Učenici rade na projektima" onclick="openModal(this)">
-                            <img src="../images/workshop2.jpg" alt="Programiranje u Scratch-u" onclick="openModal(this)">
-                            <img src="../images/workshop3.jpg" alt="Prezentiranje igara" onclick="openModal(this)">
-                            <img src="../images/workshop4.jpg" alt="Timski rad" onclick="openModal(this)">
-                            <img src="../images/workshop5.jpg" alt="Finalni rezultati" onclick="openModal(this)">
-                            <img src="../images/workshop6.jpg" alt="Učenici s instruktorom" onclick="openModal(this)">
-                        </div>
-                    </div>
-                </section>
+        
+        <!-- Stats section -->
+        <section class="stats">
+            <div class="stat-card">
+                <div class="stat-number">500+</div>
+                <div class="stat-label">Polaznika</div>
             </div>
-
-            <!-- Right sidebar -->
-            <aside class="sidebar">
-                <!-- Registration card -->
-                <div class="registration-card">
-                    <h3>Prijavite se na radionicu</h3>
-                    <div class="price-info">
-                        <span class="price">Besplatno</span>
-                    </div>
-                    <div class="spots-info">
-                        <span class="spots-available">Dostupno mjesta: <strong id="available-spots">12</strong></span>
-                    </div>
-                    <button class="register-btn" onclick="registerForWorkshop()">
-                        Prijavi se
-                    </button>
-                    <p class="register-note">Za učenike do 16 godina potrebna je suglasnost roditelja</p>
-                </div>
-
-                <!-- Contact instructor -->
-                <div class="contact-card">
-                    <h3>Kontaktiraj voditelja</h3>
-                    <div class="instructor-info">
-                        <img src="../images/instructor-placeholder.jpg" alt="Dr. Marko Novak" class="instructor-photo">
-                        <div class="instructor-details">
-                            <h4 id="instructor-name">Dr. Marko Novak</h4>
-                            <p class="instructor-title">Predavač programiranja</p>
-                            <p class="instructor-experience">10+ godina iskustva</p>
-                        </div>
-                    </div>
-                    <button class="contact-btn" onclick="contactInstructor()">
-                        Pošalji poruku
-                    </button>
-                </div>
-
-                <!-- Similar workshops -->
-                <div class="similar-workshops">
-                    <h3>Slične radionice</h3>
-                    <div class="similar-workshop-item">
-                        <h4>Robotika s Arduino</h4>
-                        <p>22. srpnja 2025.</p>
-                        <a href="workshop-robotika.html">Pogledaj detalje</a>
-                    </div>
-                    <div class="similar-workshop-item">
-                        <h4>3D modeliranje</h4>
-                        <p>29. srpnja 2025.</p>
-                        <a href="workshop-3d.html">Pogledaj detalje</a>
-                    </div>
-                </div>
-            </aside>
-        </div>
+            <div class="stat-card">
+                <div class="stat-number">20+</div>
+                <div class="stat-label">Radionica</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">15</div>
+                <div class="stat-label">Mentora</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">95%</div>
+                <div class="stat-label">Zadovoljstvo</div>
+            </div>
+        </section>
     </main>
-
-    <!-- Image modal -->
-    <div id="imageModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal()">&times;</span>
-            <img id="modalImage" src="" alt="">
-            <div class="modal-caption" id="modalCaption"></div>
-        </div>
-    </div>
 
     <footer>
         <p>&copy; 2025 miniTVZ. Sva prava pridržana.</p>
     </footer>
-
-    <script src="../js/workshop-details.js"></script>
 </body>
 </html>
